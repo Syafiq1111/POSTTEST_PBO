@@ -1,22 +1,17 @@
 public class AbsensiKaryawan {
-    private int id;
-    private String nama;
+
+    private Karyawan karyawan;
     private String tanggal;
     private String status;
 
-    public AbsensiKaryawan(int id, String nama, String tanggal, String status) {
-        this.id = id;
-        this.nama = nama;
+    public AbsensiKaryawan(Karyawan karyawan, String tanggal, String status) {
+        this.karyawan = karyawan;
         this.tanggal = tanggal;
         this.status = status;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getNama() {
-        return nama;
+    public Karyawan getKaryawan() {
+        return karyawan;
     }
 
     public String getTanggal() {
@@ -27,10 +22,6 @@ public class AbsensiKaryawan {
         return status;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
     public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
     }
@@ -39,5 +30,3 @@ public class AbsensiKaryawan {
         this.status = status;
     }
 }
-
-
