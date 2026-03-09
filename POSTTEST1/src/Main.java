@@ -18,7 +18,9 @@ public class Main {
             System.out.println("2. Tampilkan Data Karyawan");
             System.out.println("3. Tambah Data Absensi");
             System.out.println("4. Tampilkan Data Absensi");
-            System.out.println("5. Exit");
+            System.out.println("5. Update Data Absensi");
+            System.out.println("6. Hapus Data Absensi");
+            System.out.println("7. Exit");
             System.out.print("Pilih menu: ");
             pilihan = input.nextInt();
 
@@ -36,12 +38,18 @@ public class Main {
                     tampilAbsensi();
                     break;
                 case 5:
+                    updateAbsensi();
+                    break;
+                case 6:
+                    hapusAbsensi();
+                    break;
+                case 7:
                     System.out.println("Program selesai.");
                     break;
                 default:
                     System.out.println("Menu tidak tersedia");
             }
-        } while (pilihan != 5);
+        } while (pilihan != 7);
     }
 
     static void tambahKaryawan() {
@@ -116,5 +124,44 @@ public class Main {
             System.out.println("Status: " + a.getStatus());
             System.out.println("--------------------");
         }
+    }
+
+    static void updateAbsensi() {
+
+        System.out.print("Masukkan ID Karyawan yang ingin diupdate absensinya: ");
+        int id = input.nextInt();
+        input.nextLine();
+
+        for (AbsensiKaryawan a : dataAbsensi) {
+
+            if (a.getKaryawan().getId() == id) {
+
+                System.out.print("Tanggal baru: ");
+                a.setTanggal(input.nextLine());
+
+                System.out.print("Status baru (Hadir/Izin/Sakit): ");
+                a.setStatus(input.nextLine());
+
+                System.out.println("Data absensi berhasil diupdate.");
+                return;
+            }
+        }
+        System.out.println("Data absensi tidak ditemukan.");
+    }
+
+    static void hapusAbsensi() {
+
+        System.out.print("Masukkan ID Karyawan yang ingin dihapus absensinya: ");
+        int id = input.nextInt();
+
+        for (AbsensiKaryawan a : dataAbsensi) {
+
+            if (a.getKaryawan().getId() == id) {
+                dataAbsensi.remove(a);
+                System.out.println("Data absensi berhasil dihapus.");
+                return;
+            }
+        }
+        System.out.println("Data absensi tidak ditemukan.");
     }
 }
